@@ -1,60 +1,71 @@
-![](/logo.png)
+# LSPosed Framework
 
-#### This is not an officially supported Google product
+[![Build](https://img.shields.io/github/actions/workflow/status/LSPosed/LSPosed/core.yml?branch=master&event=push&logo=github&label=Build)](https://github.com/LSPosed/LSPosed/actions/workflows/core.yml?query=event%3Apush+branch%3Amaster+is%3Acompleted) [![Crowdin](https://img.shields.io/badge/Localization-Crowdin-blueviolet?logo=Crowdin)](https://lsposed.crowdin.com/lsposed) [![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/LSPosed) [![Chat](https://img.shields.io/badge/Join-QQ%E9%A2%91%E9%81%93-red?logo=tencent-qq&logoColor=red)](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=Xz9dJ&from=246610&biz=ka) [![Download](https://img.shields.io/github/v/release/LSPosed/LSPosed?color=orange&logoColor=orange&label=Download&logo=DocuSign)](https://github.com/LSPosed/LSPosed/releases/latest) [![Total](https://shields.io/github/downloads/LSPosed/LSPosed/total?logo=Bookmeter&label=Counts&logoColor=yellow&color=yellow)](https://github.com/LSPosed/LSPosed/releases)
 
-## Introduction
+## Introduction 
 
-Magisk is a suite of open source software for customizing Android, supporting devices higher than Android 6.0.<br>
-Some highlight features:
+A Riru / Zygisk module trying to provide an ART hooking framework which delivers consistent APIs with the OG Xposed, leveraging LSPlant hooking framework.
 
-- **MagiskSU**: Provide root access for applications
-- **Magisk Modules**: Modify read-only partitions by installing modules
-- **MagiskBoot**: The most complete tool for unpacking and repacking Android boot images
-- **Zygisk**: Run code in every Android applications' processes
+> Xposed is a framework for modules that can change the behavior of the system and apps without touching any APKs. That's great because it means that modules can work for different versions and even ROMs without any changes (as long as the original code was not changed too much). It's also easy to undo. As all changes are done in the memory, you just need to deactivate the module and reboot to get your original system back. There are many other advantages, but here is just one more: multiple modules can do changes to the same part of the system or app. With modified APKs, you have to choose one. No way to combine them, unless the author builds multiple APKs with different combinations.
 
-## Downloads
+## Supported Versions
 
-[Github](https://github.com/topjohnwu/Magisk/) is the only source where you can get official Magisk information and downloads.
+Android 8.1 ~ 14
 
-[![](https://img.shields.io/badge/Magisk-v27.0-blue)](https://github.com/topjohnwu/Magisk/releases/tag/v27.0)
-[![](https://img.shields.io/badge/Magisk%20Beta-v27.0-blue)](https://github.com/topjohnwu/Magisk/releases/tag/v27.0)
-[![](https://img.shields.io/badge/Magisk-Canary-red)](https://raw.githubusercontent.com/topjohnwu/magisk-files/canary/app-release.apk)
-[![](https://img.shields.io/badge/Magisk-Debug-red)](https://raw.githubusercontent.com/topjohnwu/magisk-files/canary/app-debug.apk)
+## Install
 
-## Useful Links
+1. Install Magisk v24+
+2. (For Riru flavor) Install [Riru](https://github.com/RikkaApps/Riru/releases/latest) v26.1.7+
+3. [Download](#download) and install LSPosed in Magisk app
+4. Reboot
+5. Open LSPosed manager from notification
+6. Have fun :)
 
-- [Installation Instruction](https://topjohnwu.github.io/Magisk/install.html)
-- [Building and Development](https://topjohnwu.github.io/Magisk/build.html)
-- [Magisk Documentation](https://topjohnwu.github.io/Magisk/)
+## Download
 
-## Bug Reports
+- For stable releases, please go to [Github Releases page](https://github.com/LSPosed/LSPosed/releases)
+- For canary build, please check [Github Actions](https://github.com/LSPosed/LSPosed/actions/workflows/core.yml?query=branch%3Amaster)
 
-**Only bug reports from Debug builds will be accepted.**
+Note: debug builds are only available in Github Actions.
 
-For installation issues, upload both boot image and install logs.<br>
-For Magisk issues, upload boot logcat or dmesg.<br>
-For Magisk app crashes, record and upload the logcat when the crash occurs.
+## Get Help
+**Only bug reports from **THE LATEST DEBUG BUILD** will be accepted.**
+- GitHub issues: [Issues](https://github.com/LSPosed/LSPosed/issues/)
+- (For Chinese speakers) 本项目只接受英语**标题**的issue。如果您不懂英语，请使用[翻译工具](https://www.deepl.com/zh/translator)
 
-## Translation Contributions
+## For Developers
 
-Default string resources for the Magisk app and its stub APK are located here:
+Developers are welcome to write Xposed modules with hooks based on LSPosed Framework. A module based on LSPosed framework is fully compatible with the original Xposed Framework, and vice versa, a Xposed Framework-based module will work well with LSPosed framework too.
 
-- `app/src/main/res/values/strings.xml`
-- `stub/src/main/res/values/strings.xml`
+- [Xposed Framework API](https://api.xposed.info/)
 
-Translate each and place them in the respective locations (`[module]/src/main/res/values-[lang]/strings.xml`).
+We use our own module repository. We welcome developers to submit modules to our repository, and then modules can be downloaded in LSPosed.
+
+- [LSPosed Module Repository](https://github.com/Xposed-Modules-Repo)
+
+## Community Discussion
+
+- Telegram: [@LSPosed](https://t.me/s/LSPosed)
+
+Notice: These community groups don't accept any bug report, please use [Get help](#get-help) to report.
+
+## Translation Contributing
+
+You can contribute translation [here](https://lsposed.crowdin.com/lsposed).
+
+## Credits 
+
+- [Magisk](https://github.com/topjohnwu/Magisk/): makes all these possible
+- [Riru](https://github.com/RikkaApps/Riru): provides a way to inject code into zygote process
+- [XposedBridge](https://github.com/rovo89/XposedBridge): the OG Xposed framework APIs
+- [Dobby](https://github.com/jmpews/Dobby): used for inline hooking
+- [LSPlant](https://github.com/LSPosed/LSPlant): the core ART hooking framework
+- [EdXposed](https://github.com/ElderDrivers/EdXposed): fork source
+- ~[SandHook](https://github.com/ganyao114/SandHook/): ART hooking framework for SandHook variant~
+- ~[YAHFA](https://github.com/rk700/YAHFA): previous ART hooking framework~
+- ~[dexmaker](https://github.com/linkedin/dexmaker) and [dalvikdx](https://github.com/JakeWharton/dalvik-dx): to dynamically generate YAHFA hooker classes~
+- ~[DexBuilder](https://github.com/LSPosed/DexBuilder): to dynamically generate YAHFA hooker classes~
 
 ## License
 
-    Magisk, including all git submodules are free software:
-    you can redistribute it and/or modify it under the terms of the
-    GNU General Public License as published by the Free Software Foundation,
-    either version 3 of the License, or (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+LSPosed is licensed under the **GNU General Public License v3 (GPL-3)** (http://www.gnu.org/copyleft/gpl.html).
